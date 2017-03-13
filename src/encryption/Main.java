@@ -15,9 +15,9 @@ import javax.crypto.SecretKey;
  */
 public class Main {
     public static String ex = ".txt";
-    public static String plain = "1" + ex;
-    public static String cipher = "cipher"+ ex;
-    public static String afterdec = "decypt"+ ex;
+    public static String plain = "data/1" + ex;
+    public static String cipher = "data/cipher"+ ex;
+    public static String afterdec = "data/decypt"+ ex;
 
     public static void main(String[] args) throws Exception {
 //
@@ -44,7 +44,7 @@ public class Main {
 //        String ciphertextFile = "ciphertextSymm.txt";
 //        
 
-      ICryto cryto = new CrytoSym("RSA","/ECB/NoPadding", 16);
+      ICryto cryto = new CrytoSym("AES","/ECB/NoPadding", 16);
       SecretKey key = cryto.keyGenerator();
       cryto.encrypt(key, plain , cipher); 
       cryto.decrypt(key, cipher, afterdec);

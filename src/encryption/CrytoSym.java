@@ -46,13 +46,25 @@ public class CrytoSym implements ICryto {
             in = new DataInputStream(new FileInputStream(inFile));
             out = new FileOutputStream(outFile);
             while ((c = in.read(buffer)) > 0) {
-                md.update(buffer);
+                md.update(buffer, 0, c);
+
+                // add padding for the last one
+                if (c < BYTE_OF_BLOCK) {               
+                    for (int i = c; i >= 1; i--) {
+                        buffer[i] = buffer[i - 1];
+                    }
+                     buffer[0] = (byte) c;
+                    for (int i = c+1; i < buffer.length; i++) {
+                        buffer[i] = 0;
+                    }
+                }
+
                 encVal = aesCipher.doFinal(buffer);
                 //        String encryptedValue = new BASE64Encoder().encode(encVal);
-                out.write(encVal, 0, c);
+                out.write(encVal, 0, buffer.length);
                 count += c;
                 if (count % 10240000 == 0) {
-                    System.out.println("count: " + Double.toString(count*100.0 / inFile.length()) + "%");
+                    //        System.out.println("count: " + Double.toString(count*100.0 / inFile.length()) + "%");
                 }
             }
 
@@ -92,14 +104,23 @@ public class CrytoSym implements ICryto {
             outFile = new File(outPath);
             in = new DataInputStream(new FileInputStream(inFile));
             out = new FileOutputStream(outFile);
+            // definitely c = 16 or c = -1, do not have case c < 16 because of padding
             while ((c = in.read(buffer)) > 0) {
                 decVal = aesCipher.doFinal(buffer);
-                out.write(decVal, 0, c);
+                int cc = BYTE_OF_BLOCK;
+                // remove padding, have to determine the last one
+                if((inFile.length() - count) == BYTE_OF_BLOCK){                
+                    cc = decVal[0];
+                    for(int i = 0; i < (int)cc; i++){
+                        decVal[i] = decVal[i+1];
+                    }
+                }
+                out.write(decVal, 0, cc);
                 count += c;
                 if (count % 10240000 == 0) {
-                    System.out.println("count: " + Double.toString(count*1.0 / inFile.length()) + "%");
+                    //            System.out.println("count: " + Double.toString(count*1.0 / inFile.length()) + "%");
                 }
-                md.update(decVal);
+                md.update(decVal, 0, cc);
             }
             in.close();
             out.close();
