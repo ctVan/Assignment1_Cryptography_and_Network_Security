@@ -43,14 +43,23 @@ public class Client extends javax.swing.JFrame implements ActionListener {
             try {
                 byte[] sizeArr = new byte[4];
                 DataInputStream dis = new DataInputStream(client.getInputStream());
-  //              String receive = dis.readUTF();
-                dis.read(sizeArr,0,4);
+                dis.read(sizeArr, 0, 4);
+                System.err.print("available: " + Integer.toString(dis.available()));
                 Message msg = new Message();
                 int lenMsg = msg.byte2int(sizeArr);
+                System.err.println("size: " + Integer.toString(lenMsg));
+                if (lenMsg < 0) {
+                    continue;
+                }
+
                 byte[] rec = new byte[lenMsg];
-                dis.read(rec);
-   //             byte[] rec = receive.getBytes();
-                
+
+                int byteRead = 0, offset = 0;
+                do {
+                    byteRead = dis.read(rec, offset, lenMsg - offset);
+                    offset += byteRead;
+                } while (byteRead > 0);
+                System.err.println("total byte read: " + Integer.toString(offset));
                 msg.deserialize(rec, rec.length);
 
                 if (msg.msgType == MessageType.FILE) {
@@ -64,8 +73,7 @@ public class Client extends javax.swing.JFrame implements ActionListener {
                         // save to file
                         IO.printout(msg.data, file.getAbsolutePath());
                     }
-                    continue;
-                } else {
+                } else if (msg.msgType == MessageType.MSG) {
                     // receive data from server
                     String str = new String(msg.data);
                     TxtArea.setText(TxtArea.getText() + "\n" + "Van: " + str);
@@ -149,7 +157,7 @@ public class Client extends javax.swing.JFrame implements ActionListener {
             try {
                 DataOutputStream dos = new DataOutputStream(
                         client.getOutputStream());
-                dos.writeUTF(new String(str));
+                dos.write(str);
             } catch (IOException e1) {
             } finally {
                 SendtxtArea.setText("");
@@ -172,7 +180,7 @@ public class Client extends javax.swing.JFrame implements ActionListener {
                 try {
                     DataOutputStream dos = new DataOutputStream(
                             client.getOutputStream());
-                    dos.writeUTF(new String(str));
+                    dos.write(str);
                 } catch (IOException e1) {
 
                 } finally {

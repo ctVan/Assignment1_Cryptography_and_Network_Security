@@ -8,7 +8,6 @@ package chattingservice;
 import Serialization.EncryptType;
 import Serialization.Message;
 import Serialization.MessageType;
-import static chattingservice.Client.client;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.DataInputStream;
@@ -110,10 +109,22 @@ public final class Server extends javax.swing.JFrame implements ActionListener {
         server = serverSocket.accept();
         while (true) {
             try {
+                byte[] sizeArr = new byte[4];
                 DataInputStream dis = new DataInputStream(server.getInputStream());
-                String receive = dis.readUTF();
-                byte[] rec = receive.getBytes();
+                dis.read(sizeArr, 0, 4);
                 Message msg = new Message();
+                int lenMsg = msg.byte2int(sizeArr);
+                if (lenMsg < 0) {
+                    continue;
+                }
+                byte[] rec = new byte[lenMsg];
+
+                int byteRead = 0, offset = 0;
+                do {
+                    byteRead = dis.read(rec, offset, lenMsg - offset);
+                    offset += byteRead;
+                } while (byteRead > 0);
+                System.err.println("total byte read: " + Integer.toString(offset));
                 msg.deserialize(rec, rec.length);
 
                 if (msg.msgType == MessageType.FILE) {
@@ -127,8 +138,7 @@ public final class Server extends javax.swing.JFrame implements ActionListener {
                         // save to file
                         IO.printout(msg.data, file.getAbsolutePath());
                     }
-                    continue;
-                } else {
+                } else if (msg.msgType == MessageType.MSG) {
                     // receive data from server
                     String str = new String(msg.data);
                     TxtArea.setText(TxtArea.getText() + "\n" + "Tay: " + str);
@@ -167,7 +177,7 @@ public final class Server extends javax.swing.JFrame implements ActionListener {
             try {
                 DataOutputStream dos = new DataOutputStream(
                         server.getOutputStream());
-                dos.writeUTF(new String(str));
+                dos.write(str);
             } catch (IOException e1) {
             } finally {
                 SendtxtArea.setText("");
@@ -192,10 +202,9 @@ public final class Server extends javax.swing.JFrame implements ActionListener {
                             server.getOutputStream());
                     dos.write(str);
                     TxtArea.setText(TxtArea.getText() + "\n" + "Send file to Tay: " + msg.fileName);
-          //          dos.writeUTF(new String(str));
                 } catch (IOException e1) {
 
-                } finally {                    
+                } finally {
                     SendtxtArea.setText("");
                 }
             }
