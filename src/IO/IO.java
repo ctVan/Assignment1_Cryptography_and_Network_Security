@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package chattingservice;
+package IO;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class IO {
 
-    static void printout(byte[] data, String filename) {
+    public static void printout(byte[] data, String filename) {
         DataOutputStream out;
         try {
             out = new DataOutputStream(new FileOutputStream(filename));
@@ -32,7 +32,7 @@ public class IO {
         }
     }
 
-    static byte[] readin(String filename) {
+    public static byte[] readin(String filename) {
         File file = new File(filename);
         byte[] result = new byte[(int) file.length()];
         DataInputStream in;

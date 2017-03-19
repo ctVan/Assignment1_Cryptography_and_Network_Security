@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package encryption;
-
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
+import IO.Configuration;
 import javax.crypto.SecretKey;
 
 /**
@@ -14,10 +12,11 @@ import javax.crypto.SecretKey;
  * @author ctVan
  */
 public class Main {
+
     public static String ex = ".txt";
     public static String plain = "data/1" + ex;
-    public static String cipher = "data/cipher"+ ex;
-    public static String afterdec = "data/decypt"+ ex;
+    public static String cipher = "data/cipher" + ex;
+    public static String afterdec = "data/decypt" + ex;
 
     public static void main(String[] args) throws Exception {
 //
@@ -44,9 +43,27 @@ public class Main {
 //        String ciphertextFile = "ciphertextSymm.txt";
 //        
 
-      ICryto cryto = new CrytoSym("AES","/ECB/NoPadding", 16);
-      SecretKey key = cryto.keyGenerator();
-      cryto.encrypt(key, plain , cipher); 
-      cryto.decrypt(key, cipher, afterdec);
+//        ICryto cryto = new CrytoSym("AES", "/ECB/NoPadding", 16);
+//        SecretKey key = cryto.keyGenerator();
+//        String encodedKey = cryto.key2String(key);
+//        System.err.println("key; "+ encodedKey);
+//        
+//        SecretKey kk = cryto.string2Key(encodedKey);
+//        System.err.print("after key: "+ cryto.key2String(kk));
+//
+//        cryto.encrypt(key, plain, cipher);
+//        cryto.decrypt(key, cipher, afterdec);
+
+
+//        Configuration config = new Configuration();
+//        ICryto cryto = new CrytoSym("AES", "/ECB/NoPadding", 16);
+//        SecretKey key = cryto.keyGenerator();
+//        config.keyAES = cryto.key2String(key);
+//        config.keyDES = "DES";
+//        config.privateKeyRSA = "private";
+//        config.publicKeyRSA = "public";
+//        config.write();
+        Configuration config = new Configuration();
+        config.read();
     }
 }

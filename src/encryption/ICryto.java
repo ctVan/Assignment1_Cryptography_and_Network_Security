@@ -15,4 +15,6 @@ public interface ICryto {
     public boolean encrypt(SecretKey key, String inPath, String outPath);
     public boolean decrypt(SecretKey key, String inPath, String outPath);
     public SecretKey keyGenerator();
+    public String key2String(SecretKey key);
+    public SecretKey string2Key(String _key);
 }

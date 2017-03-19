@@ -5,6 +5,7 @@
  */
 package chattingservice;
 
+import IO.IO;
 import Serialization.EncryptType;
 import Serialization.Message;
 import Serialization.MessageType;
@@ -25,7 +26,7 @@ import javax.swing.JFileChooser;
 public class Client extends javax.swing.JFrame implements ActionListener {
 
     static Socket client;
-    static int PORT = 8888;
+    static int PORT = 9991;
     static String HOSTNAME = "localhost";
 
     public Client() throws IOException {
@@ -74,9 +75,15 @@ public class Client extends javax.swing.JFrame implements ActionListener {
                         IO.printout(msg.data, file.getAbsolutePath());
                     }
                 } else if (msg.msgType == MessageType.MSG) {
-                    // receive data from server
-                    String str = new String(msg.data);
-                    TxtArea.setText(TxtArea.getText() + "\n" + "Van: " + str);
+                    // in case exchange key of AES or DES
+                    if (msg.encryptType == EncryptType.RSA) {
+                        String key = new String(msg.data);
+                        // save to file config, set variable
+                    } else {
+                        // receive data from server
+                        String str = new String(msg.data);
+                        TxtArea.setText(TxtArea.getText() + "\n" + "Van: " + str);
+                    }
                 }
 
             } catch (IOException e1) {

@@ -6,9 +6,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.*;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.*;
+import javax.crypto.spec.SecretKeySpec;
 import sun.misc.*;
 
 public class CrytoSym implements ICryto {
@@ -49,12 +51,12 @@ public class CrytoSym implements ICryto {
                 md.update(buffer, 0, c);
 
                 // add padding for the last one
-                if (c < BYTE_OF_BLOCK) {               
+                if (c < BYTE_OF_BLOCK) {
                     for (int i = c; i >= 1; i--) {
                         buffer[i] = buffer[i - 1];
                     }
-                     buffer[0] = (byte) c;
-                    for (int i = c+1; i < buffer.length; i++) {
+                    buffer[0] = (byte) c;
+                    for (int i = c + 1; i < buffer.length; i++) {
                         buffer[i] = 0;
                     }
                 }
@@ -109,10 +111,10 @@ public class CrytoSym implements ICryto {
                 decVal = aesCipher.doFinal(buffer);
                 int cc = BYTE_OF_BLOCK;
                 // remove padding, have to determine the last one
-                if((inFile.length() - count) == BYTE_OF_BLOCK){                
+                if ((inFile.length() - count) == BYTE_OF_BLOCK) {
                     cc = decVal[0];
-                    for(int i = 0; i < (int)cc; i++){
-                        decVal[i] = decVal[i+1];
+                    for (int i = 0; i < (int) cc; i++) {
+                        decVal[i] = decVal[i + 1];
                     }
                 }
                 out.write(decVal, 0, cc);
@@ -150,5 +152,14 @@ public class CrytoSym implements ICryto {
             Logger.getLogger(CrytoSym.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+
+    public String key2String(SecretKey key) {
+        return Base64.getEncoder().encodeToString(key.getEncoded());
+    }
+
+    public SecretKey string2Key(String _key) {
+        byte[] decodedKey = Base64.getDecoder().decode(_key);
+        return new SecretKeySpec(decodedKey, ALG);
     }
 }
