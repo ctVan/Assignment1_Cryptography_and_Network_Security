@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.*?>
+
+<TitledPane prefHeight="600.0" prefWidth="602.0" text="WELCOME FILE ENCRYPT/DECRYPT" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cryptographynetworksecurity.FXMLDocumentController">
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+    <content>
+      <Pane prefHeight="485.0" prefWidth="344.0">
+         <children>
+            <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="602.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Encryption">
+                  <content>
+                    <AnchorPane id="cancelButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="602.0">
+                           <children>
+                              <Group layoutX="-2.0" layoutY="7.0">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="445.0" layoutX="21.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="564.0" />
+                                    <Button id="chooseFileFolderEncryptDESButton" fx:id="chooseFileFolderEncryptButton" layoutX="95.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#handleChooseFileFolderEncryptButtonClick" prefHeight="56.0" prefWidth="134.0">
+                                       <styleClass>
+                                          <String fx:value="button-encrypt-file" />
+                                          <String fx:value="button-encrypt" />
+                                       </styleClass></Button>
+                                    <TextField id="generateSecretKeyEncryptDESTextField" fx:id="generateSecreteKeyEncryptTextField" editable="false" layoutX="270.0" layoutY="184.0" prefHeight="25.0" prefWidth="286.0" promptText="Click button to generate secret key..." />
+                                    <TextField id="chooseFileFolderEncryptDESTextField" fx:id="chooseFileFolderEncryptTextField" editable="false" layoutX="270.0" layoutY="106.0" prefHeight="25.0" prefWidth="286.0" promptText="Click button to choose file or folder" />
+                                    <Button id="generateSecretKeyEncryptDESButton" fx:id="generateSecretKeyEncryptButton" layoutX="94.0" layoutY="168.0" mnemonicParsing="false" onMouseClicked="#handleGenerateSecretKeyEncryptButtonClick" prefHeight="56.0" prefWidth="136.0">
+                                       <styleClass>
+                                          <String fx:value="button-encrypt" />
+                                          <String fx:value="button-encrypt-key" />
+                                       </styleClass></Button>
+                                    <Button id="encryptDESButton" fx:id="encryptButton" layoutX="191.0" layoutY="238.0" mnemonicParsing="false" onMouseClicked="#handleEncryptButtonClick" prefHeight="48.0" prefWidth="225.0" styleClass="buttons-encrypt-class" text="ENCRYPT FILE" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Segoe UI Light" size="20.0" />
+                                       </font></Button>
+                                    <TextField id="generateSecretKeyEncryptDESTextField" fx:id="RSAPublicKeyEncryptTextField" editable="false" layoutX="264.0" layoutY="333.0" prefHeight="25.0" prefWidth="291.0" promptText="Click button to choose receiver's public key" />
+                                    <Button id="encryptDESButton" fx:id="encryptSecretKeyButton" layoutX="188.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#handleEncryptSecretKeyButtonClick" prefHeight="48.0" prefWidth="225.0" styleClass="buttons-encrypt-class" text="ENCRYPT SECRET KEY" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Segoe UI Light" size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button id="generateSecretKeyEncryptDESButton" fx:id="RSAPublicKeyEncryptButton" layoutX="122.0" layoutY="317.0" mnemonicParsing="false" onMouseClicked="#handleRSAPublickKeyEncryptButtonClick" prefHeight="56.0" prefWidth="80.0">
+                                       <styleClass>
+                                          <String fx:value="button-encrypt" />
+                                          <String fx:value="button-encrypt-key" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="cancelButton" layoutX="319.0" layoutY="446.0" mnemonicParsing="false" onMouseClicked="#handleCancelButtonClick" prefHeight="41.0" prefWidth="90.0" styleClass="mainButton" text="Cancel" />
+                                    <Button fx:id="sendButton" layoutX="192.0" layoutY="446.0" mnemonicParsing="false" onMouseClicked="#handleSendButtonClick" prefHeight="41.0" prefWidth="106.0" styleClass="mainButton" text="SEND" />
+                                 </children>
+                              </Group>
+                              <Label layoutX="192.0" layoutY="14.0" text="ENCRYPTION" textFill="#ffc769">
+                                 <font>
+                                    <Font name="Calibri Light" size="42.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Decryption">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="355.0" prefWidth="602.0">
+                      <children>
+                              <Group layoutX="-12.0" layoutY="-138.0">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="446.0" layoutX="31.0" layoutY="201.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="560.0" />
+                                    <Button id="decryptDESButton" fx:id="decryptButton" layoutX="208.0" layoutY="525.0" mnemonicParsing="false" onMouseClicked="#handleDecryptButtonClick" prefHeight="48.0" prefWidth="208.0" styleClass="buttons-decrypt-class" text="DECRYPT FILE" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Segoe UI Light" size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <TextField id="chooseFileFolderDecryptDESTextField" fx:id="chooseFileFolderDecryptTextField" editable="false" layoutX="265.0" layoutY="478.0" prefHeight="25.0" prefWidth="286.0" promptText="Click to choose file to decrypt" />
+                                    <TextField id="enterSecretKeyDecryptDESButton" fx:id="enterSecretKeyDecryptTextField" layoutX="265.0" layoutY="328.0" prefHeight="25.0" prefWidth="286.0" promptText="Click button to choose secret key" />
+                                    <Button id="chooseFileFolderDecryptDESButton" fx:id="chooseFileFolderDecryptButton" layoutX="90.0" layoutY="464.0" mnemonicParsing="false" onMouseClicked="#handleChooseFileFolderDecryptButtonClick" prefHeight="53.0" prefWidth="137.0">
+                                       <styleClass>
+                                          <String fx:value="button-decrypt" />
+                                          <String fx:value="button-decrypt-file" />
+                                       </styleClass></Button>
+                                    <Button id="enterSecretKeyDecryptButton" fx:id="enterSecretKeyDecryptButton" layoutX="89.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#handleEnterKeySecretKeyDecryptButtonClick" prefHeight="55.0" prefWidth="136.0">
+                                       <styleClass>
+                                          <String fx:value="button-decrypt-key" />
+                                          <String fx:value="button-decrypt" />
+                                       </styleClass></Button>
+                                    <TextField id="enterSecretKeyDecryptDESButton" fx:id="RSAPrivateKeyDecryptTextField" layoutX="265.0" layoutY="246.0" prefHeight="25.0" prefWidth="286.0" promptText="Click button to choose receiver's private key" />
+                                    <Button id="enterSecretKeyDecryptButton" fx:id="RSAPrivateKeyDecryptButton" layoutX="124.0" layoutY="231.0" mnemonicParsing="false" onMouseClicked="#handleRSAPrivateKeyDecryptButtonClick" prefHeight="55.0" prefWidth="70.0">
+                                       <styleClass>
+                                          <String fx:value="button-decrypt-key" />
+                                          <String fx:value="button-decrypt" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button id="decryptDESButton" fx:id="decryptSecretKeyButton" layoutX="208.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#handleDecryptSecretKeyButtonClick" prefHeight="48.0" prefWidth="208.0" styleClass="buttons-decrypt-class" text="DECRYPT SECRET KEY" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Segoe UI Light" size="20.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Group>
+                              <Label layoutX="193.0" layoutY="14.0" text="DECRYPTION" textFill="#6696ff">
+                                 <font>
+                                    <Font name="Calibri Light" size="42.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Hash Check">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Group layoutY="-17.0">
+                                 <children>
+                                    <TextField fx:id="originalFileTextField" editable="false" layoutX="235.0" layoutY="118.0" prefHeight="25.0" prefWidth="297.0" promptText="Click to choose original file..." />
+                                    <TextArea fx:id="hashValueOriginalFileTextArea" layoutX="235.0" layoutY="166.0" prefHeight="66.0" prefWidth="298.0" />
+                                    <Button fx:id="originalFileButton" layoutX="108.0" layoutY="112.0" mnemonicParsing="false" onMouseClicked="#handleOriginalFileButtonClick" prefHeight="37.0" prefWidth="101.0">
+                                       <styleClass>
+                                          <String fx:value="button-encrypt-file" />
+                                          <String fx:value="button-encrypt" />
+                                       </styleClass></Button>
+                                    <Label layoutX="108.0" layoutY="180.0" prefHeight="37.0" prefWidth="110.0" text="Hash value:">
+                                       <font>
+                                          <Font name="Courier New" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="66.0" layoutY="67.0" prefHeight="37.0" prefWidth="124.0" text="Original File">
+                                       <font>
+                                          <Font name="Segoe UI Light" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Group layoutY="-13.0">
+                                 <children>
+                                    <TextArea fx:id="hashValueDecryptedFileTextArea" layoutX="231.0" layoutY="337.0" prefHeight="66.0" prefWidth="298.0" />
+                                    <TextField fx:id="decryptedFileTextField" editable="false" layoutX="232.0" layoutY="289.0" prefHeight="25.0" prefWidth="297.0" promptText="Click to choose decrypted file..." />
+                                    <Label layoutX="104.0" layoutY="351.0" prefHeight="37.0" prefWidth="111.0" text="Hash value:">
+                                       <font>
+                                          <Font name="Courier New" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="decryptedFileButton" layoutX="108.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#handleDecryptedFileButtonClick" prefHeight="37.0" prefWidth="101.0">
+                                       <styleClass>
+                                          <String fx:value="button-encrypt" />
+                                          <String fx:value="button-encrypt-file" />
+                                       </styleClass></Button>
+                                    <Label layoutX="66.0" layoutY="239.0" prefHeight="37.0" prefWidth="124.0" text="Decrypted File">
+                                       <font>
+                                          <Font name="Segoe UI Light" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Group>
+                              <Button fx:id="checkHashButton" layoutX="185.0" layoutY="459.0" mnemonicParsing="false" onMouseClicked="#handleCheckHashButton" prefHeight="38.0" prefWidth="94.0" styleClass="mainButton" text="Check" />
+                              <Button layoutX="320.0" layoutY="459.0" mnemonicParsing="false" onMouseClicked="#handleCancelHashCheckButton" prefHeight="38.0" prefWidth="98.0" styleClass="mainButton" text="Cancel" />
+                              <Label layoutX="170.0" layoutY="8.0" prefHeight="49.0" prefWidth="263.0" text="HASH CHECKER" textFill="#6696ff">
+                                 <font>
+                                    <Font name="Calibri Light" size="42.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="148.0" layoutY="414.0" prefHeight="37.0" prefWidth="52.0" text="Status">
+                                 <font>
+                                    <Font name="Segoe UI Light" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="statusTextField" editable="false" layoutX="232.0" layoutY="420.0" prefHeight="25.0" prefWidth="297.0" promptText="Choose file and click &quot;Check&quot; to check..." />
+                              <Line endX="100.0" layoutX="300.0" layoutY="229.0" startX="-100.0" />
+                              <Line endX="100.0" layoutX="297.0" layoutY="404.0" startX="-100.0" />
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Key Generator">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button id="generateSecretKeyEncryptDESButton" fx:id="generateSecretKeyEncryptButton1" layoutX="233.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#handleGenerateSecretKeyEncryptButtonClick" prefHeight="56.0" prefWidth="136.0">
+                                 <styleClass>
+                                    <String fx:value="button-encrypt" />
+                                    <String fx:value="button-encrypt-key" />
+                                 </styleClass>
+                              </Button>
+                              <Label layoutX="180.0" layoutY="128.0" prefHeight="18.0" prefWidth="242.0" text="Click below button to generate key:">
+                                 <font>
+                                    <Font name="Footlight MT Light" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="160.0" layoutY="14.0" text="KEY GENERATOR" textFill="#6696ff">
+                                 <font>
+                                    <Font name="Calibri Light" size="42.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <Label layoutX="14.0" layoutY="546.0" text="FILE ENCRYPT/DECRYPT" textAlignment="CENTER" textFill="#9500ff">
+               <font>
+                  <Font name="FontAwesome" size="14.0" />
+               </font>
+            </Label>
+            <ProgressBar layoutX="182.0" layoutY="546.0" prefHeight="18.0" prefWidth="128.0" progress="0.0" />
+         </children>
+      </Pane>
+   </content>
+</TitledPane>

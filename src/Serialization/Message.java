@@ -10,19 +10,22 @@ package Serialization;
  * @author ctVan
  */
 public final class Message {
+
     public int lengthMsg;
     public int encryptType;
     public int msgType;
+    // 2 variable below only use for send file
     public String fileName;
+    public String key;
     public byte[] data;
     private byte[] result;
 
-    public Message() {      
+    public Message() {
     }
 
     public int messageSize() {
         if (msgType == MessageType.FILE) {
-            return 12 + data.length + fileName.length() + 2; // 2 byte of size file name
+            return 12 + data.length + fileName.length() + 2 + key.length() + 2; // 2 byte of size file name
         } else {
             return 12 + data.length;
         }
@@ -65,7 +68,12 @@ public final class Message {
             if (!buf.writeStringS2(fileName)) {
                 return false;
             }
+            // key
+            if (!buf.writeStringS2(key)) {
+                return false;
+            }
         }
+
         // data
         if (!buf.writeRawBuf(data, data.length)) {
             return false;
@@ -90,7 +98,11 @@ public final class Message {
             if ((fileName = buf.readStringS2()).equals(MBufferWrapper.ERROR_READ_STRING_S2)) {
                 return false;
             }
+            if ((key = buf.readStringS2()).equals(MBufferWrapper.ERROR_READ_STRING_S2)) {
+                return false;
+            }        
         }
+        // buffer
         // data
         int dataLen = buf.sizeRemain();
         data = new byte[dataLen];
@@ -99,7 +111,8 @@ public final class Message {
         }
         return buf.sizeRemain() == 0;
     }
-    public int byte2int(byte[] _size){     
+
+    public int byte2int(byte[] _size) {
         int size = 0;
         MBufferWrapper buf = new MBufferWrapper(_size, _size.length);
         if ((size = buf.readI32()) == MBufferWrapper.ERROR_READ_INT) {

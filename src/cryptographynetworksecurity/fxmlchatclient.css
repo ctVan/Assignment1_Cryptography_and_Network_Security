@@ -1,0 +1,66 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    
+}
+.buttons-class{
+        
+        -fx-background-image: url("img/file-icon.png");
+    	-fx-background-size: 35 35;
+	-fx-background-repeat: no-repeat;
+        -fx-background-position:center;
+        
+  
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 1;
+    -fx-border-color: #A7DFFF;
+    -fx-background-color: #A7DFFF;
+    
+
+}
+.buttons-class:hover{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #A7DFFF;
+    -fx-border-width: 3px;
+}
+
+#sendFileButton {
+    
+        -fx-background-image: url("img/file-icon.png");
+    	-fx-background-size: 35 35;
+	-fx-background-repeat: no-repeat;
+        -fx-background-position:center;
+  
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 1;
+    -fx-border-color: #A7DFFF;
+    -fx-background-color: #A7DFFF;
+
+}
+
+#sendButton {
+    
+  
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 1;
+    -fx-border-color: #A7DFFF;
+    -fx-background-color: #A7DFFF;
+}
+
+#sendButton:hover{
+    -fx-text-fill: #A7DFFF;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #A7DFFF;
+    -fx-border-width: 3px;  
+}
+
+#sendFileButton:hover{
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #A7DFFF;
+    -fx-border-width: 3px;
+}

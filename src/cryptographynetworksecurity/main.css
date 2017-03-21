@@ -1,0 +1,153 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    
+}
+.button-encrypt{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-cursor:hand;
+}
+.button-encrypt-file {
+        -fx-background-image: url("img/choose-file-encrypt-icon.png");
+    	-fx-background-size: 35 35;
+	-fx-background-repeat: no-repeat;
+        -fx-background-position: center;
+        -fx-cursor:hand;
+}
+
+.button-encrypt:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),
+        #9d4024,
+        #d86e3a,
+        radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);
+}
+
+.button-encrypt-key {
+        -fx-background-image: url("img/secret-key-icon.png");
+    	-fx-background-size: 35 35;
+	-fx-background-repeat: no-repeat;
+        -fx-background-position: center;    
+        -fx-cursor:hand;
+}
+
+.buttons-decrypt-class{
+    -fx-padding: 8 8 8 8;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 1;
+    -fx-border-color: #1B66BF;
+    -fx-background-color: #1B66BF;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor:hand;
+
+}
+.buttons-decrypt-class:hover{
+    -fx-text-fill: #1B66BF;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #1B66BF;
+    -fx-border-width: 3px;
+    -fx-cursor:hand;
+}
+
+.buttons-encrypt-class{
+    -fx-padding: 8 8 8 8;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 1;
+    -fx-border-color: #FFCE77;
+    -fx-background-color: #FFCE77;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor:hand;
+}
+
+.buttons-encrypt-class:hover{
+    -fx-text-fill: #FFCE77;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #FFCE77;
+    -fx-border-width: 3px;
+    -fx-cursor:hand;
+}
+
+.button-decrypt-file{
+        -fx-background-image: url("img/choose-file-decrypt-icon.png");
+    	-fx-background-size: 35 35;
+	-fx-background-repeat: no-repeat;
+        -fx-background-position: center;
+        -fx-cursor:hand;
+}
+.button-decrypt-key{
+        -fx-background-image: url("img/secret-key-icon.png");
+    	-fx-background-size: 35 35;
+	-fx-background-repeat: no-repeat;
+        -fx-background-position: center;
+        -fx-cursor:hand;
+}
+.button-decrypt {
+    -fx-background-color: 
+        #8499C3,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,4,3,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 10 20 10 20;
+    -fx-cursor:hand;
+}
+
+.button-decrypt:hover{
+    -fx-background-color:
+                #3E4752,
+        linear-gradient(#38424b 0%, #1f2429 20%, #3E4752 100%),
+        linear-gradient(#20262b, #3E4752),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+}
+
+.button-decrypt Text {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.9) , 1, 0.0 , 0 , 1 );
+}
+
+.mainButton {
+    -fx-background-color: 
+        linear-gradient(#8E57D9 0%, #7C47C4 25%, #6834AF 75%, #592EAE 100%),
+        linear-gradient(#4C15AD, #511FA9), 
+        linear-gradient(#8671AB 0%, #9077BD 20%, #8667BE 80%, #9174C6 100%),
+        linear-gradient(#8671AB 0%, #9077BD 20%, #8667BE 80%, #9C7BD6 100%),
+        linear-gradient(#B69FE1 0%, #A991D6 50%, #9B84C5 51%, #9E83CF 100%);
+    -fx-background-insets: 0,1,4,5,6;
+    -fx-background-radius: 9,8,5,4,3;
+    -fx-padding: 15 20 15 20;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+    -fx-cursor:hand;
+}
+
+.mainButton:hover{
+    -fx-background-color: 
+        linear-gradient(#8E57D9 0%, #7C47C4 25%, #6834AF 75%, #592EAE 100%),
+        linear-gradient(#4C15AD, #511FA9), 
+        linear-gradient(#8671AB 0%, #9077BD 20%, #8667BE 80%, #9174C6 100%),
+        linear-gradient(#8671AB 0%, #9077BD 20%, #8667BE 80%, #9C7BD6 100%),
+        linear-gradient(#C3B1E1 0%, #BEAAE1 50%, #B9A4DF 51%, #B69DE5 100%);    
+}
+.mainButton Text {
+    -fx-effect: dropshadow( one-pass-box , black , 0, 0.0 , 0 , -1 );
+}

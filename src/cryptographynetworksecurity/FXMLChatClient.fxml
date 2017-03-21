@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="469.0" prefWidth="577.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cryptographynetworksecurity.FXMLChatClientController">
+    <stylesheets>
+        <URL value="@fxmlchat.css" />
+    </stylesheets>
+   <children>
+      <TextArea fx:id="messageTextArea" layoutX="14.0" layoutY="58.0" prefHeight="331.0" prefWidth="550.0" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font></TextArea>
+      <Button id="sendButton" fx:id="sendButton" layoutX="376.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#handleSendButtonClick" prefHeight="55.0" prefWidth="109.0" text="SEND" textFill="WHITE">
+         <font>
+            <Font name="GulimChe" size="26.0" />
+         </font></Button>
+      <TextArea fx:id="enterTextArea" layoutX="14.0" layoutY="406.0" prefHeight="55.0" prefWidth="351.0" promptText="Enter message here..." wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font></TextArea>
+      <Button fx:id="sendFileButton" layoutX="497.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#handleSendFileButtonClick" prefHeight="55.0" prefWidth="66.0" styleClass="buttonSendFile" />
+      <Button fx:id="startButton" layoutX="263.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#handleStartButtonClick" text="Connect" />
+   </children>
+</AnchorPane>
